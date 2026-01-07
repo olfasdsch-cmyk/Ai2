@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#cards-container {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: center;
+padding: 20px;
+}
+
+.pricing {
+width: 300px;
+background-color: #fff;
+box-shadow: 0 0 10px #ccc;
+padding: 10px;
+text-align: left;
+}
+
+.title {
+font-size: 22px;
+font-weight: bold;
+}
+
+.price {
+font-size: 18px;
+color: green;
+}
+
+.features {
+list-style: none;
+padding-left: 0;
+}
+
+.features li {
+padding: 4px;
+border-bottom: 1px solid #eee;
+}
+
+.btn {
+background: blue;
+color: white;
+padding: 10px 20px;
+border: none;
+margin-top: 10px;
+}
+
+.btn:hover {
+background: darkblue;
+}
+</style>
+</head>
+<body>
+<div id="cards-container"></div>
+
+<script>
+function Card(title, price, features, buttonText = "Start Trial") {
+    const card = document.createElement('div');
+    card.className = 'pricing';
+    
+    const titleEl = document.createElement('h2');
+    titleEl.className = 'title';
+    titleEl.textContent = title;
+    
+    const priceEl = document.createElement('p');
+    priceEl.className = 'price';
+    priceEl.textContent = price;
+    
+    const featuresList = document.createElement('ul');
+    featuresList.className = 'features';
+    features.forEach(feature => {
+        const li = document.createElement('li');
+        li.textContent = feature;
+        featuresList.appendChild(li);
+    });
+    
+    const button = document.createElement('button');
+    button.className = 'btn';
+    button.textContent = buttonText;
+    
+    card.appendChild(titleEl);
+    card.appendChild(priceEl);
+    card.appendChild(featuresList);
+    card.appendChild(button);
+    
+    return card;
+}
+
+// Example usage: Create cards
+const container = document.getElementById('cards-container');
+container.appendChild(Card(
+    'Basic Plan',
+    '$9.99 /month',
+    ['1 GB Storage', 'Basic Support', 'All Core Features']
+));
+
+// You can easily create more cards:
+// container.appendChild(Card('Pro Plan', '$19.99 /month', ['10 GB Storage', 'Priority Support', 'Advanced Features']));
+// container.appendChild(Card('Enterprise Plan', '$49.99 /month', ['Unlimited Storage', '24/7 Support', 'All Features']));
+</script>
+
+</body>
+</html>
